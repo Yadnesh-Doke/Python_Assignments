@@ -1,4 +1,7 @@
+import sys
+
 def guess():
+    """Function that guesses the user's number. """
     i = 0
     j = 100
     m = (i + j) // 2
@@ -19,7 +22,7 @@ def guess():
 
     except ValueError:
         print("Please enter a Integer number for calculation.Try again.")
-        exit(1)
+        sys.exit(1)
 
     print(f"It took {counter} attempts to guess your number.")
 

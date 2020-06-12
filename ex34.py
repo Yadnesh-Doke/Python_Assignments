@@ -1,11 +1,12 @@
 import json
+import sys
 
 file = "birthdays.json"
 try:
     f = open(file)
 except FileNotFoundError:
     print(f"No such file found named '{file}'")
-    exit(1)
+    sys.exit(1)
 
 birthday_dictionary = json.load(f)
 

@@ -1,6 +1,7 @@
 import random
 
 def find(lst,element):
+    """Function which checks existence of element in given list. """
     if element in lst:
         return True
     else:

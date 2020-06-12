@@ -1,8 +1,10 @@
+import sys
+
 try:
     num = int(input("Enter a number:  "))
 except ValueError:
     print("Please enter a Integer number for calculation.Try again.")
-    exit(1)
+    sys.exit(1)
 
 if num > 1:
     for i in range(2,num//2):

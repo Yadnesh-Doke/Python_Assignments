@@ -21,9 +21,10 @@ import re
 inp = input("Enter comma separated passwords:  \n")
 
 passwords  = []
+pattern = re.compile(".*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$#@]).*")
 for password in inp.split(","):
     if (len(password)>=6 and len(password)<=12):
-        if((re.search("[a-z]",password)) and (re.search("[A-Z]",password)) and (re.search("[0-9]",password)) and (re.search("[$#@]",password)) and not(re.search("\s",password))):
+        if (pattern.findall(password)):
             passwords.append(password)
 
 if len(passwords) > 0:

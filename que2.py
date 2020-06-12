@@ -12,13 +12,14 @@
 
 # [[0, 0, 0, 0, 0], [0, 1, 2, 3, 4], [0, 2, 4, 6, 8]]
 
+import sys
 
 try:
     X = int(input("Enter X: "))
     Y = int(input("Enter Y: "))
 except:
     print("Please enter Integer numbers for calculation.Try again.")
-    exit(1)
+    sys.exit(1)
 
 
 arr = []

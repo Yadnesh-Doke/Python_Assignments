@@ -1,4 +1,5 @@
 import json
+import sys
 from collections import Counter
 from bokeh.plotting import figure, show, output_file
 
@@ -7,7 +8,7 @@ try:
     f = open(file)
 except FileNotFoundError:
     print(f"No such file found named '{file}'")
-    exit(1)
+    sys.exit(1)
 
 birthday_dictionary = json.load(f)
 

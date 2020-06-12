@@ -2,11 +2,11 @@ import requests
 from bs4 import BeautifulSoup
 
 base_url = "http://www.vanityfair.com/society/2014/06/monica-lewinsky-humiliation-culture"
-r = requests.get(base_url)
-soup = BeautifulSoup(r.text,features="html.parser")
+source = requests.get(base_url)
+neat_source_Code = BeautifulSoup(source.text,features="html.parser")
 
-all_p_cn_text_body = soup.select("p")
+all_p = neat_source_Code.select("p")
 
-for elem in all_p_cn_text_body[7:]:
+for elem in all_p[7:]:
     # print("inside for loop")
     print(elem.text)

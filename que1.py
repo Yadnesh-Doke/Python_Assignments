@@ -21,6 +21,7 @@
 # 18,22,24
 
 import math
+import sys
 
 C = 50
 H = 30
@@ -34,7 +35,10 @@ try:
         D.append(int(i))
 except:
     print("Please enter Integer numbers for calculation.Try again.")
-    exit(1)
+    sys.exit(1)
 
+print("C = ",C)
+print("H = ",H)
 for d in D:
-    print(round(math.sqrt((2*C*d)/H )),end=",")
+    print(f"For {d}, (2 * C * {d})/H = ",end="")
+    print(round(math.sqrt((2*C*d)/H )))

@@ -1,6 +1,7 @@
 import random
 
 def filetolist(filename):
+    """Function that adds list of file into a list and returns the list."""
     file = open(filename)
 
     lst = []
