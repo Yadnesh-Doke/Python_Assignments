@@ -4,20 +4,17 @@ game = [[1, 2, 0],
 
 def get_winner(board):
 	"""Function that checks whether any player has won. """
-    #for rows
+
     for i in range(3):
         row = set(board[i])
         if len(row) == 1 and board[i][0] != 0:
             return board[i][0]
 
-    #for columns
     for i in range(3):
         column = set(list([board[0][i],board[1][i],board[2][i]]))
-        # column = set(col)
         if len(column) == 1 and board[0][i] != 0:
             return board[0][i]
 
-    #for diagonals
     dia1 = set(list([board[0][0],board[1][1],board[2][2]]))
     dia2 = set(list([board[0][2],board[1][1],board[2][0]]))
 

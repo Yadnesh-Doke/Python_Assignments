@@ -8,14 +8,21 @@ except ValueError:
     print("Please enter Integer numbers for calculation.Try again.")
     sys.exit(1)
 
-def largest(a,b,c):
+def largest(*args):
     """Function which finds the largest number etween the given 3 numbers. """
-    if a>b and a>c:
-        return a
-    if b>a and b>c:
-        return b
-    else:
-        return c
+    # if a>b and a>c:
+    #     return a
+    # if b>a and b>c:
+    #     return b
+    # else:
+    #     return c
+
+    lst = []
+    for i in args:
+        lst.append(i)
+
+    lst.sort()
+    return lst[-1]
 
 max = largest(first,second,third)
 print("The largest number is: ",max)

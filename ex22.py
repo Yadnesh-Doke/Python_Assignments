@@ -1,21 +1,12 @@
-import sys
+with open("namesfile.txt","r") as file:
+    line=file.readline()
+    count = {}
+    while line:
+        if line.strip() in count:
+            count[line.strip()] += 1
+        else:
+            count[line.strip()] = 1
 
-file = "namesfile.txt"
-try:
-    file = open(file)
-except FileNotFoundError:
-    print(f"No such file found named '{file}'.")
-    sys.exit(1)
+        line = file.readline()
 
-line=file.readline()
-
-count = {}
-while line:
-    if line.strip() in count:
-        count[line.strip()] += 1
-    else:
-        count[line.strip()] = 1
-
-    line = file.readline()
-
-print(count)
+    print(count)
