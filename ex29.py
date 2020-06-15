@@ -1,0 +1,99 @@
+class TicTacToe:
+	""" Class for a Tic Tac Toe game """
+
+	def __init__(self):
+		""" To draw the initial empty board for the game """
+		self.game = [[0, 0, 0],
+			    	 [0, 0, 0],
+			    	 [0, 0, 0]]
+
+
+	def show_board(self,values=[1,1],player=0):
+		""" This method shows the current state of the board """
+		self.game[int(values[0])-1][int(values[1])-1] = player
+		for sublist in self.game:
+			print(sublist)
+
+
+	def validate_input(self,user_input):
+		"""This method validates the user input and if not valid, gives proper error messages."""
+		if len(user_input) != 2:
+			print("Input must be two numbers in format row,col e.g.  1,2 ")
+			return False
+
+		try:
+			if (1 <= int(user_input[0]) <= 3) and (1 <= int(user_input[1]) <= 3):
+				if (self.game[int(user_input[0])-1][int(user_input[1])-1] != 0):
+					print("This position is already taken. Plz try different position.")
+					return False
+
+				else:
+					return True
+
+			else:
+				print("Input values must be numbers between 1 to 3. Please enter the values again.")
+				return False
+
+		except:
+			print("Input values must be NUMBERS between 1 to 3.")
+			return False
+
+
+	def get_winner(self,board):
+		"""This method inspects the game board and determines whether any player has won or not """
+
+		for i in range(3):
+			row = set(board[i])
+			if len(row) == 1 and board[i][0] != 0:
+				return board[i][0]
+
+		for i in range(3):
+			column = set(list([board[0][i],board[1][i],board[2][i]]))
+			if len(column) == 1 and board[0][i] != 0:
+				return board[0][i]
+
+		dia1 = set(list([board[0][0],board[1][1],board[2][2]]))
+		dia2 = set(list([board[0][2],board[1][1],board[2][0]]))
+
+		if len(dia1) == 1 and board[0][0] != 0:
+			return board[0][0]
+		elif len(dia2) == 1 and board[0][2] != 0:
+			return board[0][2]
+
+		return 0
+
+
+	def game_over(self):
+	    if self.get_winner(self.game) == 1:
+	        print("Player1 wins!! Congratulations Player1 !!")
+	        return True
+	    elif self.get_winner(self.game) == 2:
+	        print("Player2 wins!! Congratulations Player2 !!")
+	        return True
+	    else:
+	        for lst in self.game:
+	            if 0 in lst:
+	                return False
+
+	        print("Game over! Board is filled.")
+	        return True
+
+
+if __name__ == "__main__":
+	turn = 1
+	row_col = []
+	tictactoe = TicTacToe()
+	tictactoe.show_board()
+	while not tictactoe.game_over():
+		while not tictactoe.validate_input(row_col):
+			player = turn % 2
+			if player == 0:
+				player = 2
+
+			inp = input(f"Player {player} input: ")
+			row_col = inp.split(",")
+
+		tictactoe.show_board(row_col,player)
+
+		turn += 1
+		row_col = []
